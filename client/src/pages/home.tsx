@@ -5,10 +5,20 @@ import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background font-sans selection:bg-primary/20">
@@ -19,20 +29,21 @@ export default function Home() {
       />
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-white/10 backdrop-blur-md border-b border-white/10">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <span className="font-serif text-xl font-bold text-foreground">
+      <nav className={`fixed top-0 w-full z-40 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-lg border-b border-border py-2 shadow-sm' : 'bg-transparent py-4'}`}>
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+          <span className={`font-serif text-2xl font-bold transition-colors duration-300 ${isScrolled ? 'text-foreground' : 'text-white'}`}>
             Puja Patel
           </span>
-          <div className="hidden md:flex gap-8 text-sm font-medium text-foreground/80">
-            <a href="#services" className="hover:text-primary transition-colors">Services</a>
+          <div className={`hidden md:flex gap-8 text-sm font-semibold transition-colors duration-300 ${isScrolled ? 'text-foreground/80' : 'text-white/90'}`}>
             <a href="#about" className="hover:text-primary transition-colors">About</a>
+            <a href="#services" className="hover:text-primary transition-colors">Services</a>
             <a href="#testimonials" className="hover:text-primary transition-colors">Testimonials</a>
-            <a href="https://wa.me/918595100460" className="hover:text-primary transition-colors">WhatsApp</a>
           </div>
-          <Button variant="ghost" size="sm" className="hidden md:flex">
-            Book Appointment
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button variant={isScrolled ? "default" : "outline"} size="sm" className={`hidden md:flex ${!isScrolled && 'border-white text-white hover:bg-white hover:text-black'}`} asChild>
+              <a href="https://wa.me/918595100460">Book Appointment</a>
+            </Button>
+          </div>
         </div>
       </nav>
 
