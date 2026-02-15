@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Hero } from "@/components/sections/Hero";
 import { BentoGrid } from "@/components/sections/BentoGrid";
+import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import { Button } from "@/components/ui/button";
@@ -24,10 +25,10 @@ export default function Home() {
             Puja Patel
           </span>
           <div className="hidden md:flex gap-8 text-sm font-medium text-foreground/80">
-            <a href="#" className="hover:text-primary transition-colors">Collections</a>
-            <a href="#" className="hover:text-primary transition-colors">Services</a>
-            <a href="#" className="hover:text-primary transition-colors">About</a>
-            <a href="#" className="hover:text-primary transition-colors">Contact</a>
+            <a href="#services" className="hover:text-primary transition-colors">Services</a>
+            <a href="#about" className="hover:text-primary transition-colors">About</a>
+            <a href="#testimonials" className="hover:text-primary transition-colors">Testimonials</a>
+            <a href="https://wa.me/918595100460" className="hover:text-primary transition-colors">WhatsApp</a>
           </div>
           <Button variant="ghost" size="sm" className="hidden md:flex">
             Book Appointment
@@ -37,6 +38,7 @@ export default function Home() {
 
       <main>
         <Hero />
+        <About />
         <BentoGrid />
         <Testimonials />
         
@@ -47,8 +49,8 @@ export default function Home() {
             <p className="mb-8 text-white/60">
               Visit our boutique in Ghaziabad or start a conversation on WhatsApp.
             </p>
-            <Button size="lg" className="bg-white text-black hover:bg-white/90">
-              Start a Conversation
+            <Button size="lg" className="bg-white text-black hover:bg-white/90" asChild>
+              <a href="https://wa.me/918595100460">Start a Conversation</a>
             </Button>
             <div className="mt-12 pt-12 border-t border-white/10 text-xs text-white/40 flex flex-col md:flex-row justify-between items-center gap-4">
                <p>© 2026 Puja Patel Ethnic Designs. All rights reserved.</p>

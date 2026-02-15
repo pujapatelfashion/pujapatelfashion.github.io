@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Scissors, Ruler, Sparkles, Shirt } from "lucide-react";
+import { Scissors, Ruler, Sparkles, Shirt, Heart, Clock, TrendingUp, ShieldCheck } from "lucide-react";
 import lehenga from "@/assets/lehenga.jpg";
 import embroidery from "@/assets/embroidery.jpg";
 import saree from "@/assets/saree.jpg";
@@ -22,8 +22,39 @@ export function BentoGrid() {
     show: { opacity: 1, y: 0 }
   };
 
+  const categories = [
+    {
+      title: "Traditional Blouses",
+      description: "Custom-designed for the perfect silhouette. From padded bridal blouses to daily wear, we ensure your saree looks its best.",
+      icon: <Sparkles className="h-6 w-6" />,
+      image: embroidery,
+      span: "md:col-span-2 md:row-span-1"
+    },
+    {
+      title: "Suits & Salwars",
+      description: "Elegant and comfortable designs for every occasion. Expert stitching for Anarkalis, Churidar, and straight suits.",
+      icon: <Shirt className="h-6 w-6" />,
+      image: tailoring,
+      span: "md:col-span-1 md:row-span-2"
+    },
+    {
+      title: "Saree Work",
+      description: "Expert fall-pico, tassels, and border work to enhance the beauty of your favorite sarees.",
+      icon: <Heart className="h-6 w-6" />,
+      image: saree,
+      span: "md:col-span-1 md:row-span-1"
+    },
+    {
+      title: "Leggings & Pajamas",
+      description: "Custom-fit bottom wear designed for comfort and durability. Available in all sizes and fabrics.",
+      icon: <Ruler className="h-6 w-6" />,
+      image: fusionWear,
+      span: "md:col-span-1 md:row-span-1"
+    }
+  ];
+
   return (
-    <section className="bg-background py-24 px-4 md:px-8">
+    <section id="services" className="bg-background py-24 px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -32,10 +63,10 @@ export function BentoGrid() {
           className="mb-16 text-center"
         >
           <span className="mb-3 block font-sans text-sm font-bold uppercase tracking-widest text-primary">
-            Our Expertise
+            Services Portfolio
           </span>
           <h2 className="font-serif text-4xl font-medium text-foreground md:text-5xl">
-            Curated Collections
+            Perfection in Every Stitch
           </h2>
         </motion.div>
 
@@ -44,65 +75,108 @@ export function BentoGrid() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-1 gap-4 md:grid-cols-4 md:grid-rows-3 h-[1200px] md:h-[800px]"
+          className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-2 h-auto md:h-[700px]"
         >
-          {/* Main Feature - Bridal */}
-          <motion.div variants={item} className="group relative col-span-1 row-span-1 md:col-span-2 md:row-span-2 overflow-hidden rounded-3xl">
-            <img src={lehenga} alt="Bridal Lehenga" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 p-8">
-              <h3 className="font-serif text-2xl text-white md:text-3xl">Bridal Couture</h3>
-              <p className="mt-2 text-sm text-white/80">Handcrafted masterpieces for your special day</p>
+          {/* Main Category: Blouses */}
+          <motion.div variants={item} className="group relative md:col-span-2 md:row-span-1 overflow-hidden rounded-3xl border border-border">
+            <img src={embroidery} alt="Traditional Blouses" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/50" />
+            <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <div className="mb-4 h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                <Sparkles className="h-5 w-5" />
+              </div>
+              <h3 className="font-serif text-2xl md:text-3xl mb-2">Traditional Blouses</h3>
+              <p className="text-sm text-white/80 max-w-md">Custom-designed for the perfect silhouette. From padded bridal blouses to daily wear, we ensure your saree looks its best.</p>
+              <a href="https://wa.me/918595100460" className="mt-4 text-xs font-bold uppercase tracking-widest text-primary-foreground underline decoration-primary underline-offset-4">Inquire on WhatsApp</a>
             </div>
           </motion.div>
 
-          {/* Service - Custom Tailoring */}
-          <motion.div variants={item} className="group relative col-span-1 md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl bg-secondary/10 p-6 flex flex-col justify-between border border-secondary/20">
-            <div className="h-12 w-12 rounded-full bg-secondary/20 flex items-center justify-center text-secondary-foreground mb-4">
-              <Scissors className="h-6 w-6" />
-            </div>
-            <div>
-              <h3 className="font-serif text-xl font-medium text-foreground">Custom Tailoring</h3>
-              <p className="mt-2 text-sm text-muted-foreground">Perfect fit guaranteed with precise measurements.</p>
-            </div>
-          </motion.div>
-
-          {/* Image - Embroidery Detail */}
-          <motion.div variants={item} className="group relative col-span-1 md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl">
-             <img src={embroidery} alt="Intricate Embroidery" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
-             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-             <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-               Handwork
-             </div>
-          </motion.div>
-
-          {/* Image - Fusion Wear */}
-          <motion.div variants={item} className="group relative col-span-1 md:col-span-1 md:row-span-2 overflow-hidden rounded-3xl">
-            <img src={fusionWear} alt="Fusion Wear" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-             <div className="absolute bottom-6 left-6">
-              <h3 className="font-serif text-xl text-white">Indo-Western Fusion</h3>
-              <p className="text-xs text-white/70 mt-1">Contemporary silhouettes</p>
+          {/* Category: Suits */}
+          <motion.div variants={item} className="group relative md:col-span-1 md:row-span-2 overflow-hidden rounded-3xl border border-border">
+            <img src={tailoring} alt="Suits & Salwars" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/50" />
+            <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <div className="mb-4 h-10 w-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                <Shirt className="h-5 w-5" />
+              </div>
+              <h3 className="font-serif text-2xl mb-2">Suits & Salwars</h3>
+              <p className="text-sm text-white/80">Elegant and comfortable designs for every occasion. Expert stitching for Anarkalis, Churidar, and straight suits.</p>
+              <a href="https://wa.me/918595100460" className="mt-4 text-xs font-bold uppercase tracking-widest text-primary-foreground underline decoration-primary underline-offset-4">Get a Quote</a>
             </div>
           </motion.div>
 
-          {/* Service - Alterations */}
-          <motion.div variants={item} className="group relative col-span-1 md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl bg-white border border-border p-6 flex flex-col justify-center items-center text-center shadow-sm hover:shadow-md transition-shadow">
-             <Ruler className="h-8 w-8 text-primary mb-3" />
-             <h3 className="font-serif text-lg font-medium">Expert Alterations</h3>
-             <p className="text-xs text-muted-foreground mt-1">Revive your favorite outfits</p>
+          {/* Category: Saree Work */}
+          <motion.div variants={item} className="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl border border-border">
+            <img src={saree} alt="Saree Work" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/50" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <h3 className="font-serif text-xl mb-1">Intricate Saree Work</h3>
+              <p className="text-xs text-white/70">Expert fall-pico, tassels, and border work.</p>
+              <a href="https://wa.me/918595100460" className="mt-2 text-[10px] font-bold uppercase tracking-widest text-primary-foreground underline underline-offset-2">Book Service</a>
+            </div>
           </motion.div>
 
-           {/* Image - Saree */}
-           <motion.div variants={item} className="group relative col-span-1 md:col-span-2 md:row-span-1 overflow-hidden rounded-3xl">
-            <img src={saree} alt="Designer Sarees" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
-             <div className="absolute inset-0 bg-black/30" />
-             <div className="absolute inset-0 flex items-center justify-center">
-                <h3 className="font-serif text-3xl italic text-white mix-blend-overlay">The Saree Collection</h3>
-             </div>
+          {/* Category: Leggings */}
+          <motion.div variants={item} className="group relative md:col-span-1 md:row-span-1 overflow-hidden rounded-3xl border border-border">
+            <img src={fusionWear} alt="Leggings & Pajamas" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/40 transition-opacity group-hover:bg-black/50" />
+            <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
+              <h3 className="font-serif text-xl mb-1">Leggings & Pajamas</h3>
+              <p className="text-xs text-white/70">Custom-fit bottom wear for comfort.</p>
+              <a href="https://wa.me/918595100460" className="mt-2 text-[10px] font-bold uppercase tracking-widest text-primary-foreground underline underline-offset-2">Order Now</a>
+            </div>
           </motion.div>
-
         </motion.div>
+
+        {/* Segment Specific Messaging */}
+        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="p-8 rounded-3xl bg-primary/5 border border-primary/10"
+           >
+             <div className="mb-4 h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+               <ShieldCheck className="h-6 w-6" />
+             </div>
+             <h4 className="font-serif text-xl mb-3">For Ghaziabad Families</h4>
+             <p className="text-sm text-muted-foreground leading-relaxed">
+               Focusing on <strong>Reliability</strong> and <strong>Traditional Aesthetics</strong>. Whether it's "Saj Dhaj" for Karwa Chauth or festive Diwali preparations, we ensure your outfits mirror our rich local culture with durable stitches.
+             </p>
+           </motion.div>
+
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ delay: 0.1 }}
+             className="p-8 rounded-3xl bg-secondary/5 border border-secondary/10"
+           >
+             <div className="mb-4 h-12 w-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+               <TrendingUp className="h-6 w-6" />
+             </div>
+             <h4 className="font-serif text-xl mb-3">For Students & Gen Z</h4>
+             <p className="text-sm text-muted-foreground leading-relaxed">
+               <strong>Affordable</strong> trending designs and <strong>Modern Alterations</strong>. Repurpose your old ethnic pieces into stylish new outfits that stand out in Ghaziabad's vibrant student community.
+             </p>
+           </motion.div>
+
+           <motion.div 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ delay: 0.2 }}
+             className="p-8 rounded-3xl bg-muted border border-border"
+           >
+             <div className="mb-4 h-12 w-12 rounded-2xl bg-foreground/10 flex items-center justify-center text-foreground">
+               <Clock className="h-6 w-6" />
+             </div>
+             <h4 className="font-serif text-xl mb-3">For Busy Professionals</h4>
+             <p className="text-sm text-muted-foreground leading-relaxed">
+               <strong>Precision Fit</strong> and <strong>Timely Delivery</strong> for sophisticated workwear. Use our WhatsApp consultation to save time and get your outfits tailored without multiple visits.
+             </p>
+           </motion.div>
+        </div>
       </div>
     </section>
   );
