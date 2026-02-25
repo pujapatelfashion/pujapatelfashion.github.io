@@ -66,9 +66,10 @@ export default function Home() {
             <div className="mt-12 pt-12 border-t border-white/10 text-xs text-white/40 flex flex-col md:flex-row justify-between items-center gap-4">
                <p>© 2026 Puja Patel Ethnic Designs. All rights reserved.</p>
                <div className="flex gap-4">
-                 <a href="#" className="hover:text-white">Instagram</a>
-                 <a href="#" className="hover:text-white">Facebook</a>
-                 <a href="#" className="hover:text-white">Pinterest</a>
+                 {/* <a href="#" className="hover:text-white">Instagram</a>
+                 <a href="#" className="hover:text-white">Facebook</a> */}
+                 <p>Get In Touch</p>
+                 1150, Vevekanand Nagar, Ghaziabad, Uttar Pradesh 201001
                </div>
             </div>
           </div>
